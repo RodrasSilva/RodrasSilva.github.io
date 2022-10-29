@@ -23,7 +23,11 @@
 			<h1>
 				<strong> Hello, I'm Rodrigo Silva </strong>
 				<br />
-				25 years old
+				<script type="text/javascript">
+					const birthday = "1996/11/15"
+					var years = new Date(new Date() - new Date(birthday)).getFullYear() - 1970;
+					document.write(`${years} years old`);
+				</script>
 				<br />
 				Lisbon, Portugal 🇵🇹
 				<br />
