@@ -11,6 +11,10 @@ if [[ -z "$CI" ]]; then
     echo "Current branch: $BRANCH"
     exit 1
   fi
+else
+  # In CI, configure the remote with the token
+  echo "🔧 Configuring Git remote for CI..."
+  git remote set-url origin "https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 fi
 
 echo "🚀 Starting deployment from master..."
