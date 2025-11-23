@@ -1,31 +1,16 @@
-# Rodrigo Silva's Portfolio
+# React + Vite
 
-This repository hosts the personal portfolio website for Rodrigo Silva. It is a static site hosted on GitHub Pages, based on the "Strata" design by HTML5 UP.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Project Structure
+Currently, two official plugins are available:
 
-The codebase is organized as follows:
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-- **`index.html`**
-  The main entry point of the website. This single file contains all the HTML markup for the site, including the "About Me" section, "Publications", and contact information.
+## React Compiler
 
-- **`assets/`**
-  Contains all the static assets and styling logic:
-  - **`css/`**: Compiled stylesheets (e.g., `main.css`) used by the browser.
-  - **`sass/`**: Source Sass files (`.scss`) where styles are defined before being compiled to CSS.
-  - **`js/`**: JavaScript files for site interactivity (includes jQuery and utility scripts).
-  - **`webfonts/`**: Font files (e.g., Font Awesome) used for icons.
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-- **`images/`**
-  Stores static images used on the site, such as profile pictures and background assets.
+## Expanding the ESLint configuration
 
-- **`_config.yml`**
-  Configuration file for Jekyll (GitHub Pages' static site generator).
-
-- **`posts/`**
-  Reserved for blog posts (currently unused).
-
-## Customization
-
-- **Content**: Edit `index.html` to update text, links, and sections.
-- **Styling**: Modify the files in `assets/sass/` for structural style changes, or `assets/css/main.css` for quick overrides.
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
