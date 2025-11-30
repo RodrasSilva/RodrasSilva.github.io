@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
-import About from './components/About'
+import Home from './components/Home'
+import Blog from './components/Blog'
+import BlogPost from './components/BlogPost'
+import Navigation from './components/Navigation'
 
 function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 980);
@@ -24,11 +28,18 @@ function App() {
   }, []);
 
   return (
-    <>
+    <Router>
       <Header footer={!isMobile ? <Footer /> : null} />
-      <About />
+      <div id="main">
+        <Navigation />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:id" element={<BlogPost />} />
+        </Routes>
+      </div>
       {isMobile && <Footer />}
-    </>
+    </Router>
   )
 }
 
