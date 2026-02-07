@@ -1584,9 +1584,7 @@ body.is-touch {
 		h1 {
 			font-size: 1.25em;
 
-			br {
-				display: none;
-			}
+
 		}
 
 		>.inner {
@@ -1626,17 +1624,6 @@ body.is-touch {
 	$size-header-pad: 4em;
 
 	/* Basic */
-
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		br {
-			display: none;
-		}
-	}
 
 	/* List */
 
@@ -1850,11 +1837,7 @@ body.is-touch {
 	#header {
 		padding: ($size-header-pad * 3) $size-header-pad;
 
-		h1 {
-			br {
-				display: none;
-			}
-		}
+
 	}
 
 	/* Footer */

@@ -25,10 +25,7 @@ function Header({ footer }) {
                     Lisbon, Portugal 🇵🇹
                     <br />
                     Backend developer at <a href="https://www.linkedin.com/company/skyportugal">Sky</a>
-                    <br />
-                    BSc in Computer Science and <br /> Engineering at <a href="https://www.isel.pt/">ISEL</a>
-                    <br />
-                    MSc in Computer Science and <br /> Engineering at <a href="https://tecnico.ulisboa.pt/en/">IST</a>
+
                 </h1>
             </div>
             {footer}
