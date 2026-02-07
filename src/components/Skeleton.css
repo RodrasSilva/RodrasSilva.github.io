@@ -1,0 +1,58 @@
+.skeleton-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.skeleton {
+    background: linear-gradient(90deg,
+            var(--color-border-bg) 25%,
+            var(--color-border) 50%,
+            var(--color-border-bg) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+}
+
+.skeleton-title {
+    height: 2rem;
+    width: 100%;
+}
+
+.skeleton-text {
+    height: 1rem;
+    width: 100%;
+}
+
+.skeleton-paragraph {
+    height: 1.2rem;
+    width: 100%;
+}
+
+.skeleton-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.blog-skeleton {
+    padding: 1rem 0;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .skeleton {
+    background: linear-gradient(90deg,
+            var(--color-border-bg) 25%,
+            var(--color-border) 50%,
+            var(--color-border-bg) 75%);
+}

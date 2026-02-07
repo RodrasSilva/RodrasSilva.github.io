@@ -18,7 +18,7 @@ function Header({ footer }) {
     return (
         <header id="header" ref={headerRef}>
             <div className="inner">
-                <img className="image avatar" src="/images/avatar-summer.jpeg" alt="" />
+                <img className="image avatar" src="/images/avatar-summer.jpeg" alt="Rodrigo Silva - Backend Developer" />
                 <h1>
                     <strong> Hello, I'm Rodrigo Silva </strong>
                     <br />

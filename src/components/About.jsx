@@ -1,4 +1,5 @@
 import React from 'react';
+import Timeline from './Timeline';
 
 function About() {
     return (
@@ -28,7 +29,7 @@ function About() {
                 </div>
             </div>
 
-            <header className="major" style={{ marginTop: '0' }}>
+            <header className="major" style={{ marginTop: '2em' }}>
                 <h2>Publications and Articles </h2>
             </header>
             <br />
@@ -41,6 +42,8 @@ function About() {
                     </ul>
                 </div>
             </div>
+
+            <Timeline />
         </section>
     );
 }

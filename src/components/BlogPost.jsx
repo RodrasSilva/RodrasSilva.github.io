@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { blogData } from '../data/blogData';
+import { BlogPostSkeleton } from './Skeleton';
 
 function BlogPost() {
     const { id } = useParams();
@@ -35,7 +36,7 @@ function BlogPost() {
 
     if (!post) return <div className="inner"><h2>Post not found</h2><Link to="/blog" className="button">Back to Blog</Link></div>;
 
-    if (loading) return <div className="inner"><h2>Loading...</h2></div>;
+    if (loading) return <div className="inner"><BlogPostSkeleton /></div>;
     if (error) return <div className="inner"><h2>Error: {error}</h2><Link to="/blog" className="button">Back to Blog</Link></div>;
 
     return (

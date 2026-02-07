@@ -26,6 +26,41 @@ $size-header-pad: 4em;
 		xsmall: (null, 480px),
 	));
 
+// CSS Custom Properties for Theming
+:root {
+	--color-bg: #fff;
+	--color-fg: #a2a2a2;
+	--color-fg-bold: #787878;
+	--color-fg-light: #b2b2b2;
+	--color-border: #efefef;
+	--color-border-bg: #f7f7f7;
+	--color-border2: #dfdfdf;
+	--color-border2-bg: #e7e7e7;
+	--color-accent: #49bf9d;
+	--color-accent-fg: #{color.mix(#49bf9d, #ffffff, 25%)};
+	--color-accent-transparent: rgba(73, 191, 157, 0.25);
+	--color-header-bg: #1f1815;
+	--color-header-fg: rgba(255, 255, 255, 0.5);
+	--color-header-fg-bold: #ffffff;
+}
+
+[data-theme="dark"] {
+	--color-bg: #1a1a2e;
+	--color-fg: #a0a0b8;
+	--color-fg-bold: #e0e0e8;
+	--color-fg-light: #8080a0;
+	--color-border: #2a2a42;
+	--color-border-bg: #22223a;
+	--color-border2: #3a3a52;
+	--color-border2-bg: #2e2e46;
+	--color-accent: #49bf9d;
+	--color-accent-fg: #{color.mix(#49bf9d, #1a1a2e, 60%)};
+	--color-accent-transparent: rgba(73, 191, 157, 0.25);
+	--color-header-bg: #0f0f1a;
+	--color-header-fg: rgba(255, 255, 255, 0.6);
+	--color-header-fg-bold: #ffffff;
+}
+
 // Reset.
 // Based on meyerweb.com/eric/tools/css/reset (v2.0 | 20110126 | License: public domain)
 
@@ -195,7 +230,8 @@ html {
 }
 
 body {
-	background: _palette(bg);
+	background: var(--color-bg);
+	transition: background-color 0.3s ease, color 0.3s ease;
 
 	// Stops initial animations until page loads.
 	&.is-preload {
@@ -214,7 +250,7 @@ body,
 input,
 select,
 textarea {
-	color: _palette(fg);
+	color: var(--color-fg);
 	font-family: _font(family);
 	font-size: 16pt;
 	font-weight: _font(weight);
@@ -224,19 +260,19 @@ textarea {
 a {
 	@include vendor('transition', ('color #{_duration(transition)} ease-in-out', 'border-color #{_duration(transition)} ease-in-out'));
 	border-bottom: dotted 1px;
-	color: _palette(accent1, bg);
+	color: var(--color-accent);
 	text-decoration: none;
 
 	&:hover {
 		border-bottom-color: transparent;
-		color: _palette(accent1, bg) !important;
+		color: var(--color-accent) !important;
 		text-decoration: none;
 	}
 }
 
 strong,
 b {
-	color: _palette(fg-bold);
+	color: var(--color-fg-bold);
 	font-weight: _font(weight-bold);
 }
 
@@ -255,7 +291,7 @@ h3,
 h4,
 h5,
 h6 {
-	color: _palette(fg-bold);
+	color: var(--color-fg-bold);
 	font-weight: _font(weight-bold);
 	line-height: 1em;
 	margin: 0 0 (_size(element-margin) * 0.5) 0;
@@ -310,7 +346,7 @@ sup {
 
 hr {
 	border: 0;
-	border-bottom: solid 2px _palette(border);
+	border-bottom: solid 2px var(--color-border);
 
 	// This is the *only* instance where we need to rely on margin collapse.
 	margin: _size(element-margin) 0;
@@ -321,16 +357,16 @@ hr {
 }
 
 blockquote {
-	border-left: solid 6px _palette(border);
+	border-left: solid 6px var(--color-border);
 	font-style: italic;
 	margin: 0 0 _size(element-margin) 0;
 	padding: 0.5em 0 0.5em 1.5em;
 }
 
 code {
-	background: _palette(border-bg);
+	background: var(--color-border-bg);
 	border-radius: _size(border-radius);
-	border: solid 2px _palette(border);
+	border: solid 2px var(--color-border);
 	font-family: _font(family-fixed);
 	font-size: 0.9em;
 	margin: 0 0.25em;
@@ -441,7 +477,7 @@ article {
 
 header {
 	p {
-		color: _palette(fg-light);
+		color: var(--color-fg-light);
 		position: relative;
 		margin: 0 0 (_size(element-margin) * 0.75) 0;
 	}
@@ -642,7 +678,7 @@ input[type="radio"] {
 
 .box {
 	border-radius: _size(border-radius);
-	border: solid 2px _palette(border);
+	border: solid 2px var(--color-border);
 	margin-bottom: _size(element-margin);
 	padding: 1.5em;
 
@@ -1171,13 +1207,13 @@ input[type="button"],
 	@include vendor('flex-direction', 'column');
 	@include vendor('align-items', 'flex-end');
 	@include vendor('justify-content', 'space-between');
-	background-color: _palette(accent2, bg);
-	background-attachment: scroll, scroll;
+	background-color: var(--color-header-bg);
+	background-attachment: fixed, fixed;
 	background-image: url('images/overlay.png'), url('../../images/bg.jpg');
 	background-position: top left, top left;
 	background-repeat: repeat, no-repeat;
-	background-size: auto, 150%;
-	color: _palette(accent2, fg);
+	background-size: auto, cover;
+	color: var(--color-header-fg);
 	height: 100%;
 	left: 0;
 	padding: ($size-header-pad * 2) $size-header-pad;
@@ -1185,10 +1221,27 @@ input[type="button"],
 	text-align: right;
 	top: 0;
 	width: $size-header-width;
+	transition: background-color 0.3s ease;
+
+	// Dark mode overlay
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: rgba(15, 15, 26, 0);
+		transition: background 0.3s ease;
+		pointer-events: none;
+		z-index: 0;
+	}
 
 	>* {
 		@include vendor('flex-shrink', '0');
 		width: 100%;
+		position: relative;
+		z-index: 1;
 	}
 
 	>.inner {
@@ -1198,7 +1251,7 @@ input[type="button"],
 
 	strong,
 	b {
-		color: _palette(accent2, fg-bold);
+		color: var(--color-header-fg-bold);
 	}
 
 	h2,
@@ -1206,11 +1259,11 @@ input[type="button"],
 	h4,
 	h5,
 	h6 {
-		color: _palette(accent2, fg-bold);
+		color: var(--color-header-fg-bold);
 	}
 
 	h1 {
-		color: _palette(accent2, fg);
+		color: var(--color-header-fg);
 		font-size: 1.35em;
 		line-height: 1.75em;
 		margin: 0;
@@ -1220,6 +1273,11 @@ input[type="button"],
 		margin: 0 0 (_size(element-margin) * 0.5) 0;
 		width: 12em;
 	}
+}
+
+/* Dark mode header overlay */
+[data-theme="dark"] #header::before {
+	background: rgba(15, 15, 26, 0.7);
 }
 
 /* Footer */
@@ -1618,16 +1676,44 @@ body.is-touch {
 	/* Footer */
 
 	#footer {
-		background-attachment: scroll;
-		background-color: _palette(accent2, bg);
-		background-image: url('images/overlay.png'), url('../../images/bg.jpg');
-		background-position: top left, bottom center;
-		background-repeat: repeat, no-repeat;
-		background-size: auto, cover;
+		background-attachment: fixed;
+		background-color: var(--color-header-bg);
+		transition: background-color 0.3s ease;
+
+		// Dark mode overlay
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: rgba(15, 15, 26, 0);
+			transition: background 0.3s ease;
+			pointer-events: none;
+			z-index: 0;
+		}
+
+		[data-theme="dark"] &::before {
+			background: rgba(15, 15, 26, 0.7);
+		}
+
+		>* {
+			position: relative;
+			z-index: 1;
+		}
+
+		background-image: url('images/overlay.png'),
+		url('../../images/bg.jpg');
+		background-position: top left,
+		bottom center;
+		background-repeat: repeat,
+		no-repeat;
+		background-size: auto,
+		cover;
 		bottom: auto;
 		left: auto;
-		padding: $size-header-pad $size-header-pad (
-			$size-header-pad * 1.5) $size-header-pad;
+		padding: $size-header-pad $size-header-pad ($size-header-pad * 1.5) $size-header-pad;
 		position: relative;
 		text-align: center;
 		width: 100%;
