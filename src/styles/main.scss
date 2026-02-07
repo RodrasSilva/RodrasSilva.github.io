@@ -733,7 +733,7 @@ input[type="radio"] {
 
 	&:before {
 		@include vendor('transition', 'opacity #{_duration(transition)} ease-in-out');
-		background: url('images/overlay.png');
+		background: linear-gradient(rgba(19, 21, 25, 0.5), rgba(19, 21, 25, 0.5));
 		border-radius: _size(border-radius);
 		content: '';
 		display: block;
@@ -775,7 +775,7 @@ input[type="radio"] {
 			}
 
 			&:before {
-				background: url('images/overlay.png'), url('images/overlay.png');
+				background: linear-gradient(rgba(19, 21, 25, 0.5), rgba(19, 21, 25, 0.5));
 				opacity: 1.0;
 			}
 		}
@@ -1209,7 +1209,7 @@ input[type="button"],
 	@include vendor('justify-content', 'space-between');
 	background-color: var(--color-header-bg);
 	background-attachment: fixed, fixed;
-	background-image: url('images/overlay.png'), url('../../images/bg.jpg');
+	background-image: linear-gradient(rgba(19, 21, 25, 0.5), rgba(19, 21, 25, 0.5)), url('/images/bg.jpg');
 	background-position: top left, top left;
 	background-repeat: repeat, no-repeat;
 	background-size: auto, cover;
@@ -1690,8 +1690,8 @@ body.is-touch {
 			z-index: 1;
 		}
 
-		background-image: url('images/overlay.png'),
-		url('../../images/bg.jpg');
+		background-image: linear-gradient(rgba(19, 21, 25, 0.5), rgba(19, 21, 25, 0.5)),
+		url('/images/bg.jpg');
 		background-position: top left,
 		bottom center;
 		background-repeat: repeat,

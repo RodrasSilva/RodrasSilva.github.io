@@ -29,19 +29,7 @@ function About() {
                 </div>
             </div>
 
-            <header className="major" style={{ marginTop: '2em' }}>
-                <h2>Publications and Articles </h2>
-            </header>
-            <br />
-            <div className="row" style={{ marginTop: '-7%' }}>
-                <div className="col-12 col-12-xsmall">
-                    <ul>
-                        <li> R. Silva, C. Correia, M. Correia and L. Rodrigues. <a href="https://web.ist.utl.pt/claudio.correia/papers/inforum22-silva.pdf"> Ataques de Frequência em Deduplicação Cifrada na Nuvem</a>.  In <i> Actas do décimo terceiro Simpósio de Informática (Inforum)</i>, Guarda, Portugal, September 2022.</li>
 
-                        <li> R. Silva, C. Correia, M. Correia and L. Rodrigues. <a href="https://dl.acm.org/doi/10.1145/3555776.3577711"> Deduplication vs Privacy Tradeoffs in Cloud Storage	</a>.  In <i> Proceedings of the The 38th ACM/SIGAPP Symposium On Applied Computing (SAC)</i>, Tallinn Estonia, March 2023.</li>
-                    </ul>
-                </div>
-            </div>
 
             <Timeline />
         </section>
