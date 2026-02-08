@@ -4,7 +4,7 @@ import './Timeline.css';
 const timelineData = [
     {
         id: 1,
-        date: '2017 - 2022',
+        date: '2017 - 2020',
         title: 'BSc Computer Science & Engineering',
         institution: 'ISEL',
         institutionFull: 'Instituto Superior de Engenharia de Lisboa',
