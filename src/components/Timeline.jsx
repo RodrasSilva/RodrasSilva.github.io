@@ -58,7 +58,7 @@ function Timeline() {
                 <h2>My Journey</h2>
             </header>
             <div className="timeline timeline-compact">
-                {timelineData.map((item, index) => (
+                {[...timelineData].reverse().map((item, index) => (
                     <div
                         key={item.id}
                         className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}
