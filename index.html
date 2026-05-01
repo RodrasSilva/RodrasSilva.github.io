@@ -8,8 +8,7 @@
 
   <!-- SEO Meta Tags -->
   <title>Rodrigo Silva | Backend Developer</title>
-  <meta name="description"
-    content="Rodrigo Silva - Backend Developer at Sky Portugal." />
+  <meta name="description" content="Rodrigo Silva - Backend Developer at Sky Portugal." />
   <meta name="author" content="Rodrigo Silva" />
   <meta name="keywords"
     content="Rodrigo Silva, Backend Developer, Software Engineer, Portugal, Sky, IST, ISEL, Computer Science" />
@@ -19,8 +18,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://rodrigo-silva.pt/" />
   <meta property="og:title" content="Rodrigo Silva | Backend Developer" />
-  <meta property="og:description"
-    content="Backend Developer at Sky Portugal." />
+  <meta property="og:description" content="Backend Developer at Sky Portugal." />
   <meta property="og:image" content="https://rodrigo-silva.pt/images/avatar-summer.jpeg" />
   <meta property="og:locale" content="en_US" />
 
@@ -82,11 +80,18 @@
         window.history.replaceState(null, null,
           l.pathname.slice(0, -1) + decoded + l.hash
         );
+      } else if (l.search.slice(0, 4) === '?p=/') {
+        var decoded = l.search.slice(3).split('&').map(function (s) {
+          return s.replace(/~and~/g, '&')
+        }).join('?');
+        window.history.replaceState(null, null,
+          l.pathname.slice(0, -1) + decoded + l.hash
+        );
       }
     }(window.location))
   </script>
-  <script type="module" crossorigin src="/assets/index-M9FP4Os3.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-C1lP0re6.css">
+  <script type="module" crossorigin src="/assets/index-DsGTGJdT.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-B4RgQilO.css">
 </head>
 
 <body>
