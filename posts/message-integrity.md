@@ -135,7 +135,5 @@ Kind of keys            | none | symmetric | asymmetric
                         |      |    keys   |    keys
 ```
 
-This was my first post, so I hope that you enjoyed it.
-
 Original Post: [Message Integrity, Authentication, and Non-Repudiation
 ](https://dev.to/rodrassilva/message-integrity-authentication-and-non-repudiation-3d98)
