@@ -1,99 +1,58 @@
-import React from 'react';
-import './Timeline.css';
+import React, { useRef, useEffect } from 'react';
 
 const timelineData = [
     {
         id: 1,
-        date: '2017 - 2020',
+        date: '2017 – 2020',
         title: 'BSc Computer Science & Engineering',
-        institution: 'ISEL',
-        institutionFull: 'Instituto Superior de Engenharia de Lisboa',
-        description: 'Bachelor\'s degree focused on programming fundamentals, algorithms, databases, and software development.',
-        icon: '🎓'
+        place: 'Instituto Superior de Engenharia de Lisboa (ISEL)',
+        description: "Bachelor's degree focused on programming fundamentals, algorithms, databases, and software development.",
     },
     {
         id: 2,
-        date: '2020 - 2022',
+        date: '2020 – 2022',
         title: 'MSc Computer Science & Engineering',
-        institution: 'IST',
-        institutionFull: 'Instituto Superior Técnico',
-        description: 'Master\'s degree specializing in Software Engineering and Distributed Systems. Published research on cloud storage security.',
-        icon: '🎓'
+        place: 'Instituto Superior Técnico (IST)',
+        description: "Master's degree specialising in Software Engineering and Distributed Systems. Published research on cloud storage security.",
     },
     {
         id: 3,
-        date: 'Sep 2022',
-        title: 'Publication: Ataques de Frequência em Deduplicação Cifrada na Nuvem',
-        institution: 'Inforum',
-        institutionFull: 'Simpósio de Informática (Guarda, Portugal)',
-        description: 'R. Silva, C. Correia, M. Correia and L. Rodrigues.',
-        icon: '📄',
-        link: 'https://web.ist.utl.pt/claudio.correia/papers/inforum22-silva.pdf'
-    },
-    {
-        id: 4,
-        date: '2022 - Present',
+        date: '2022 – Present',
         title: 'Backend Developer',
-        institution: 'Sky',
-        institutionFull: 'Sky Portugal',
-        description: 'Working on backend services and mentoring summer interns. Building scalable solutions for media streaming.',
-        icon: '💼'
+        place: 'Sky Portugal',
+        description: 'Building scalable backend services for media streaming and mentoring summer interns.',
+        now: true,
     },
-    {
-        id: 5,
-        date: 'Mar 2023',
-        title: 'Publication: Deduplication vs Privacy Tradeoffs in Cloud Storage',
-        institution: 'ACM SAC',
-        institutionFull: 'Symposium On Applied Computing (Tallinn, Estonia)',
-        description: 'R. Silva, C. Correia, M. Correia and L. Rodrigues.',
-        icon: '📄',
-        link: 'https://dl.acm.org/doi/10.1145/3555776.3577711'
-    }
 ];
 
 function Timeline() {
+    const innerRef = useRef(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.disconnect(); } },
+            { threshold: 0.08 }
+        );
+        if (innerRef.current) observer.observe(innerRef.current);
+        return () => observer.disconnect();
+    }, []);
+
     return (
-        <section id="timeline" className="timeline-section">
-            <header className="major">
-                <h2>My Journey</h2>
-            </header>
-            <div className="timeline timeline-compact">
-                {[...timelineData].reverse().map((item, index) => (
-                    <div
-                        key={item.id}
-                        className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}
-                    >
-                        <div className="timeline-content">
-                            <span className="timeline-icon">{item.icon}</span>
-                            <span className="timeline-date">{item.date}</span>
-                            <h3 className="timeline-title">
-                                {item.link ? (
-                                    <a href={item.link} target="_blank" rel="noopener noreferrer">
-                                        {item.title}
-                                    </a>
-                                ) : (
-                                    item.title
-                                )}
-                            </h3>
-                            <h4 className="timeline-institution">
-                                <a
-                                    href={
-                                        item.institution === 'ISEL' ? 'https://www.isel.pt/' :
-                                            item.institution === 'IST' ? 'https://tecnico.ulisboa.pt/en/' :
-                                                item.institution === 'Sky' ? 'https://www.linkedin.com/company/skyportugal' :
-                                                    item.link || '#'
-                                    }
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    {item.institution}
-                                </a>
-                                <span className="institution-full"> - {item.institutionFull}</span>
-                            </h4>
-                            <p className="timeline-description">{item.description}</p>
+        <section id="journey" className="section alt">
+            <div className="section-inner fade-in" ref={innerRef}>
+                <p className="section-label">My Journey</p>
+                <h2>Experience & Education</h2>
+                <div className="timeline">
+                    {[...timelineData].reverse().map(item => (
+                        <div key={item.id} className="t-item">
+                            <div className={`t-dot${item.now ? ' now' : ''}`} />
+                            <p className="t-date">{item.date}</p>
+                            <p className="t-title">{item.title}</p>
+                            <p className="t-place">{item.place}</p>
+                            <p className="t-desc">{item.description}</p>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
         </section>
     );
