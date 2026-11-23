@@ -1,11 +1,12 @@
 import React from 'react';
 
 function getSeasonalAvatar() {
-    const month = new Date().getMonth();
-    if (month >= 5 && month <= 8) return '/images/avatar-summer.jpeg';
-    if (month >= 2 && month <= 4) return '/images/avatar.jpeg';
-    if (month >= 9 && month <= 10) return '/images/avatar-fall.jpg';
-    return '/images/avatar-winter.jpeg';
+   // const month = new Date().getMonth();
+   // if (month >= 5 && month <= 8) return '/images/avatar-summer.jpeg';
+   // if (month >= 2 && month <= 4) return '/images/avatar.jpeg';
+   // if (month >= 9 && month <= 10) return '/images/avatar-fall.jpg';
+   // return '/images/avatar-winter.jpeg';
+   return '/images/avatar.jpeg';
 }
 
 function Hero() {
